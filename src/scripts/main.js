@@ -4,7 +4,7 @@ import { SinkRepair } from "./SinkRepair.js"
 
 const mainContainer = document.querySelector("#container")
 
-const render = () => {
+export const render = () => {
     fetchRequests().then(
         () => {
             mainContainer.innerHTML = SinkRepair()
