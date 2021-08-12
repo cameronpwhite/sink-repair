@@ -1,27 +1,14 @@
 {
-  "plumbers": [],
-  "completions": [],
-  "requests": [
+  "plumbers": [
     {
       "id": 1,
-      "description": "Aut sint voluptatem fugit eius quas molestiae modi.",
-      "address": "34445 Bianka Ports",
-      "budget": 400,
-      "neededBy": "2021-08-27"
+      "name": "Maude"
     },
     {
-      "description": "Burst pipe",
-      "address": "700 Marvel Ave",
-      "budget": "250",
-      "neededBy": "2021-08-02",
-      "id": 3
-    },
-    {
-      "description": "Sink is broke",
-      "address": "109 Maverick Dr",
-      "budget": "400",
-      "neededBy": "2021-08-05",
-      "id": 4
+      "id": 2,
+      "name": "Merle"
     }
-  ]
+  ],
+  "completions": [],
+  "requests": []
 }
