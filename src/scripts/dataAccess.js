@@ -1,5 +1,5 @@
-import {mainContainer} from "./ServiceForm.js"
-import {render} from "./main.js"
+import { mainContainer } from "./ServiceForm.js"
+import { render } from "./main.js"
 
 export const applicationState = {
     requests: [],
@@ -30,12 +30,22 @@ export const fetchPlumbers = () => {
 }
 
 export const getRequests = () => {
-    const requestArray = applicationState.requests.map(request => ({...request}))
+    const requestArray = applicationState.requests.map(request => ({ ...request }))
     return requestArray
 }
 
 export const getPlumbers = () => {
-    return applicationState.plumbers.map(plumber => ({...plumber}))
+    return applicationState.plumbers.map(plumber => ({ ...plumber }))
+}
+
+export const getCompletions = () => {
+    requests = getRequests()
+    const foundCompletions = requests.filter(
+        (request) => {
+            return request.isComplete === true;
+        }
+    )
+    return foundCompletions
 }
 
 export const sendRequest = (userServiceRequest) => {
@@ -68,26 +78,27 @@ export const deleteRequest = (id) => {
 //Set isComplete to true.
 //Return the object.
 
-// export const completeRequest = (id) => {
-//     return fetch(`${API}/requests/${id}`), {
-//          method: "PUT",
-//          headers: {
-//              "Content-type": "application/json"
-//          },
-//          body: JSON.stringify()
-
-//          }
-//         }
-//         .then(
-//             () => {
-//                 mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
-//             }
-//         )
-// }
+export const completeRequest = (requestObject) => {
+    return fetch(`${API}/requests/${requestObject.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            isComplete: true
+        })
+    }
+        .then(response => response.json())
+        .then(
+            () => {
+                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}
 
 mainContainer.addEventListener(
     "stateChanged",
-    customEvent => {
+    (customEvent) => {
         render()
     }
 )
