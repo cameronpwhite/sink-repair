@@ -1,9 +1,9 @@
 import {mainContainer} from "./ServiceForm.js"
 import {render} from "./main.js"
 
-const applicationState = {
+export const applicationState = {
     requests: [],
-    plumbers: []
+    plumbers: [],
 }
 
 const API = "http://localhost:8088"
@@ -30,7 +30,8 @@ export const fetchPlumbers = () => {
 }
 
 export const getRequests = () => {
-    return applicationState.requests.map(request => ({...request}))
+    const requestArray = applicationState.requests.map(request => ({...request}))
+    return requestArray
 }
 
 export const getPlumbers = () => {
@@ -62,6 +63,27 @@ export const deleteRequest = (id) => {
             }
         )
 }
+
+//Get the object you want that is incomplete.
+//Set isComplete to true.
+//Return the object.
+
+// export const completeRequest = (id) => {
+//     return fetch(`${API}/requests/${id}`), {
+//          method: "PUT",
+//          headers: {
+//              "Content-type": "application/json"
+//          },
+//          body: JSON.stringify()
+
+//          }
+//         }
+//         .then(
+//             () => {
+//                 mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+//             }
+//         )
+// }
 
 mainContainer.addEventListener(
     "stateChanged",

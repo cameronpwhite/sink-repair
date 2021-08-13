@@ -7,8 +7,7 @@ const mainContainer = document.querySelector("#container")
 
 export const render = () => {
     fetchRequests()
-    .then
-    (fetchPlumbers())
+    .then(fetchPlumbers)
     .then(
         () => {
             mainContainer.innerHTML = SinkRepair()
@@ -17,5 +16,4 @@ export const render = () => {
 }
 
 render()
-
 

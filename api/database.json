@@ -10,5 +10,14 @@
     }
   ],
   "completions": [],
-  "requests": []
+  "requests": [
+    {
+      "description": "Uh huh",
+      "address": "999 Ninth Ave",
+      "budget": "500",
+      "neededBy": "1111-11-11",
+      "isComplete": false,
+      "id": 1
+    }
+  ]
 }
